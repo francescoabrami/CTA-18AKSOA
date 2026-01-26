@@ -1,4 +1,4 @@
-# Teoria ed Elaborazione dei Segnali CTA-18AKSOA 🎛️
+# Controlli Automatici CTA-18AKSOA 🎛️
 
 This repository is intended to contain all the files necessary for compiling a main.pdf document useful for studying and preparing for the subject Automatic Controls.
 
