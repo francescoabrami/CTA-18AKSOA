@@ -9,6 +9,95 @@
 
 \section{Modellistica dei sistemi}
 
+Viste ora tutte le varie introduzioni delle parti del corso entriamo nel vivo di ciò che andremo a trattare andando ad analizzare le varie tipologie di sistema ed introducendo il concetto stesso di sistema. 
+Come per le successive parti del corso introdurremo alcuni degli esempi al fine di poter vedere un po' più in pratica i concetti trattati.
+
+\subsection{Nozione di sistema}
+
+
+Iniziamo introducendo la nozione di sistema dandone la definizione ed analizzandone le componenti e caratteristiche basilari.
+
+\begin{definition}[\textbf{Nozione di sistema}]
+\end{definition}	
+Per \textbf{sistema} si intende un ente (fisico o astratto) dato dall'interconnessione di più parti elementari, per cui vale il principio di azione e reazione.
+
+Riportiamo di seguito la rappresentazione grafica di un generico sistema $S$ caratterizzato da $u(\cdot)$ e da $y(\cdot)$ che altro non sono che l'ingresso (azione, causa) e l'uscita (reazione, effetto).\\
+
+% FIGURA SISTEMA 
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw  (8.75,11.75) rectangle (8.75,11.75);
+\draw [ line width=0.8pt ] (3.75,12.75) rectangle  node {\LARGE \textbf{S}} (7.5,10.25);
+\draw [line width=0.8pt, ->, >=Stealth] (7.5,11.5) -- (10,11.5)node[pos=0.5,above, fill=white]{$y(\cdot)$};
+\draw [line width=0.8pt, ->, >=Stealth] (1.25,11.5) -- (3.75,11.5)node[pos=0.5,above, fill=white]{$u(\cdot)$};
+\end{circuitikz} }
+\label{fig:my_label}
+\end{figure}
+
+In maniera più generale possiamo dire che l'interesse del corso si focalizzi sulla variabile di uscita $y$ e del suo andamento influenzato dall'ingresso $u$.
+Inoltre ci è possibile analizzare il comportamento di un sistema attraverso $S$ ovvero un insieme di relazioni matematiche (detto modello matematico) che legano fra loro l'ingresso $u$ e l'uscita $y$.\\
+
+Infine, dati questi termini, ci è possibile evidenziare alcune problematiche di interesse nello studio dei sistemi:
+
+\begin{enumerate}
+	\item[\textbf{-}] \textbf{Previsione:} In questo primo caso, noti $u(\cdot)$ ed $S$, dobbiamo trovare l'uscita $y(\cdot)$ ovvero prevedere come il sistema si comporterà dato un certo ingresso noto. 
+	
+	\item[\textbf{-}] \textbf{Controllo:} In questo secondo caso, noti $y_{des}(\cdot)$ ed $S$, dobbiamo trovare l'ingresso $u(\cdot)$ tale per cui si ottenga in uscita $y_{des}(\cdot)$ ovvero una certa reazione desiderata a priori.
+	
+	\item[\textbf{-}] \textbf{Identificazione:} Nell'ultimo caso, noti $y(\cdot)$ ed $u(\cdot)$, dobbiamo trovare $S$ attraverso la sua identificazione. In altri termini dobbiamo capire, dati ingressi ed uscite, davanti a che tipologia di sistema ci troviamo.
+\end{enumerate}
+
+Infine, prima di concludere questa parte introduttiva, andiamo a dare alcune informazioni sulla notazione utilizzata fino ad ora e che troveremo all'interno di tutto il resto dell'elaborato.
+In particolare si ha che:
+
+\begin{enumerate}
+	\item[\textbf{-}] \textbf{u($\cdot$)} e \textbf{y($\cdot$)}: Indicano le funzioni di ingresso ed uscita. Per esempio la forza applicata ad un corpo e la sua velocità nel tempo oppure l'andamento di tensioni e correnti all'interno di un determinato circuito.
+	
+	\item[\textbf{-}] \textbf{u($t$)} e \textbf{y($t$)}: Indicano i valori assunti dalle funzioni di ingresso ed uscita in un certo istante di tempo $t$. Queste scritture indicano valori istantanei, possiamo intenderli come valori misurati in un certo instante di tempo.
+	
+\end{enumerate}
+
+
+\subsection{Sistemi statici e dinamici}
+
+Introdotto ora il concetto di sistema e dati i dovuti cenni di notazione possiamo ora introdurre la prima grande differenza tra le tipologie di sistemi che incontreremo all'interno del corso ovvero quella tra sistemi statici e dinamici.
+
+\begin{definition}[\textbf{Sistema statico}]
+\end{definition}
+
+Per sistema statico si intende un sistema il cui il legame ingresso-uscita è istantaneo o statico cioè il valore dell'uscita $y$ all'instante $t$ dipende esclusivamente dal valore dell'ingresso $u$ allo stesso instante $t$.
+
+Possiamo descrivere quanto appena detto attraverso la seguente relazione:
+
+\[y(t) = g\big(u(t)\big), \hspace{10pt} \forall t \]\
+
+Un esempio banale di sistema statico è rappresentato da un resistore ideale di cui riportiamo lo schema di seguito.
+
+% RESISTORE IDEALE
+
+
+In particolare dato un certo instante di tempo la caduta di potenziale tra i suoi capi è data esclusivamente dalla corrente che lo attraversa nello stesso instante di tempo.
+In termini matematici si ha che:
+
+\[u(t) = i_R(t)\]
+\[y(t) = V_R(t) = R \cdot i_R(t) =  g\big(u(t)\big), \hspace{10pt} \forall t \]\
+
+Riportiamo infine 
+
+\begin{definition}[\textbf{Sistema dinamico}]
+\end{definition}	
+
+
+\subsection{Classificazione dei sistemi}
+
+\subsection{Esempi}
+
+
+
 
 
 
