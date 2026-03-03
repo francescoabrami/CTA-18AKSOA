@@ -1,0 +1,71 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+
+\newpage
+
+
+\section{Analisi nel dominio di Laplace e del tempo di sistemi dinamici LTI-TC}
+
+
+
+\subsection{Esempi}
+
+Andiamo ora a vedere un primo esempio dove dato il seguente sistema LTI a tempo continuo:
+
+\[ \dot{x}(t) =  \begin{bmatrix} 0 && 2 \\ -2 && -3 \\ \end{bmatrix}  x(t) + \begin{bmatrix}
+	1 \\ 0 \end{bmatrix} u(t)  \]\ 
+	
+	
+	
+viene richiesto di determinare l'espressione analitica del movimento dello stato $x(t)$ nel caso in cui l'ingresso sia un gradino di ampiezza pari a due: $u(t) = 2 \varepsilon(t)$ e che le condizioni iniziali siano: $x(0) = [2\;\;2]^T$\\
+
+Date queste condizioni andiamo ora a vedere quali sono i passi da seguire. Prima di tutto dobbiamo andare a calcolare la soluzione $X(s)$ nel dominio della trasformata di Laplace. Successivamente andiamo a calcolarne la scomposizione in fratti semplici, e dei corrispondenti residui, di $X(s)$. Infine andiamo a calcolare $x(t)$ tramite l'antitrasformata della scomposizione in fratti semplici di $X(s)$.\\
+
+In questo caso ricordiamo la soluzione nel dominio della trasformata di Laplace:
+
+\[X(s) = (sI - A)^{-1} \cdot x(0) + (sI - A)^{-1} \cdot B \cdot U(s) \]\
+
+In particolare indichiamo i due addendi di questa formula nel seguente modo: $X_l(s)$ e $X_f(s)$ in quanto indicano il movimento libero e forzato del sistema.\\
+
+Nello specifico di questo caso andiamo ad esplicitare $A$, $B$, $x(0)$ e $U(s)$:
+
+\[ A = \begin{bmatrix} 0 && 2 \\ -2 && -3 \\ \end{bmatrix}  \hspace{10pt} B =  \begin{bmatrix} 1 \\ 0 \end{bmatrix} \hspace{10pt} x(0) =  \begin{bmatrix} 2 \\ 2 \end{bmatrix} \hspace{10pt}  U(s) =  \frac{2}{s} \]\
+
+Arrivati a questo punto ricordiamo come andiamo a calcolare il termine $X(s)$. Come prima cosa andiamo a calcolare il termine $(sI - A)^{-1}$, successivamente possiamo calcolare il movimento libero e forzato. Ottenuti i due movimenti possiamo andare a calcolare $X(s)$ come la somma di $X_l(s)$ + $X_f(s)$. Infine andiamo a scomporre in fratti semplici $X(s)$ per poi antitrsformare.\\
+
+Ricordiamo, in ultima aggiunta, che il termine $(sI - A)^{-1}$ può essere calcolare nel seguente modo:
+
+\[  (sI - A)^{-1} = \frac{1}{\unit{det}(sI - A)} \cdot \unit{Adj}(sI - A) \]\
+
+
+Ricordiamo inoltre che la matrice $\unit{Adj}(sI - A)$ indica la matrice dei % TODO finire le compoenti. 
+\\
+
+Passiamo ora alla risoluzione dell'esercizio andando ad applicare tutti i passi appena visti.
+
+Iniziamo andando a calcolare il termine comune al calcolo di movimento libero e forzato ovvero $(sI - A)^{-1}$ dove la matrice $A$ è nota da prima mentre la matrice identità (nulla se non per la diagonale principale) moltiplicata per il termine $s$. Otteniamo dunque che:
+
+\[  (sI - A)^{-1} =  \left[ \begin{bmatrix} s && 0 \\ 0 && s \end{bmatrix} - \begin{bmatrix} 0 && 1 \\ -2 && -3 \end{bmatrix} \right] ^{-1}   \]\
+
+Facendo i calcoli otteniamo che:
+
+\[ \left[ \begin{bmatrix} s && 0 \\ 0 && s \end{bmatrix} - \begin{bmatrix} 0 && 1 \\ -2 && -3 \end{bmatrix} \right] ^{-1}  =  \begin{bmatrix} s && -1 \\ 2 && s+3 \end{bmatrix}^{-1} \]\
+
+Procediamo ora andando a calcolare 
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

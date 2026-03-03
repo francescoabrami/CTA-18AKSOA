@@ -69,7 +69,7 @@ Introdotto ora il concetto di sistema e dati i dovuti cenni di notazione possiam
 \begin{definition}[\textbf{Sistema statico}]
 \end{definition}
 
-Per sistema statico si intende un sistema il cui il legame ingresso-uscita è istantaneo o statico cioè il valore dell'uscita $y$ all'instante $t$ dipende esclusivamente dal valore dell'ingresso $u$ allo stesso instante $t$.
+Per sistema statico si intende un sistema il cui il legame ingresso-uscita è istantaneo o statico: cioè il valore dell'uscita $y$ all'instante $t$ dipende esclusivamente dal valore dell'ingresso $u$ allo stesso instante $t$.
 
 Possiamo descrivere quanto appena detto attraverso la seguente relazione:
 
@@ -86,10 +86,101 @@ In termini matematici si ha che:
 \[u(t) = i_R(t)\]
 \[y(t) = V_R(t) = R \cdot i_R(t) =  g\big(u(t)\big), \hspace{10pt} \forall t \]\
 
-Riportiamo infine 
 
 \begin{definition}[\textbf{Sistema dinamico}]
 \end{definition}	
+
+Per sistema dinamico si intende un sistema in cui il legame ingresso uscita è di tipo dinamico: cioè il valore dell'uscita $y$ all'istante $t$ dipende da tutti i valori dell'ingresso $u$ fino a quell'istante $t$.
+
+Possiamo descrivere quanto appena detto attraverso la seguente relazione:
+
+\[y(t) = g\big( u\big( ] -\infty, t]\big) \big), \hspace{10pt} \forall t \]\ 
+
+Un esempio di sistema dinamico è rappresentato da un condensatore ideale di cui riportiamo lo schema di seguito.
+
+% CONDENSATORE IDEALE 
+
+In particolare, conoscendo la relazione costitutiva di un condensatore ideale, possiamo riportare le seguenti relazioni.
+
+\[u(t) = i_C(t) = C \cdot \diff{V_C(t)}{t} \]
+\[ y(t) = V_C(t) = \frac{1}{C} \int_{-\infty}^t i_C(\sigma)\; d\sigma  = g\big( u\big( ] -\infty, t]\big) \big), \hspace{10pt} \forall t  \]\
+
+Come possiamo vedere in questo caso, davanti ad un sistema dinamico, dobbiamo considerare non più solo gli ingressi attuali del sistema ma anche tutta la loro storia passata fino dall'inizio della vita stessa del sistema.
+
+Dato che non è affatto una cosa affatto banale tenere un storia di tutte le operazioni operate su di un condensatore si introduce uno stato che ha il compito di riassumere tutta la storia del sistema fino ad un certo instante $\tau$. 
+
+In termini matematici si ottiene che:
+
+\[ y(t) = g\big( x(\tau), u\big( [\tau, t]\big) \big), \hspace{10pt} \forall t \geq \tau \]\
+
+In altri termini per non dover andare a ricordare tutta la storia passata del sistema andiamo ad utilizzare uno stato che ci informa sulla condizione del sistema fino ad un certo punto ($\tau$) da cui poi possiamo andarne a studiare il comportamento. Possiamo dunque immaginare di sapere lo stato del sistema fino a ieri e di doverlo analizzare solo per il tempo mancante senza sapere cosa sia successo prima in quanto questa informazione ci viene data dallo stato.
+
+In termini grafici lo stato di un sistema si rappresenta nel seguente modo:\\
+
+% SISTEMA GRAFICO CON STATO
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.5\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw [line width=0.8pt, ->, >=Stealth] (6.25,11.5) -- (6.25,9.75)node[pos=0.5,right, fill=white]{$x(\cdot)$};
+\draw [ line width=0.8pt ] (3.75,14) rectangle  node {\LARGE S} (8.75,11.5);
+\draw [line width=0.8pt, ->, >=Stealth] (1.25,12.75) -- (3.75,12.75)node[pos=0.5,above, fill=white]{$u(\cdot)$};
+\draw [line width=0.8pt, ->, >=Stealth] (8.75,12.75) -- (11.25,12.75)node[pos=0.5,above, fill=white]{$y(\cdot)$};
+\end{circuitikz}}%
+
+\label{fig:my_label}
+\end{figure}
+
+Ora riprendendo l'esempio di un sistema dinamico composto da un condensatore possiamo operare introdurre uno stato che condensi la storia passata del sistema.
+Avremo dunque uno stato che indica la storia dall'origine fino ad un momento $\tau$:
+
+\[ x(\tau) = \frac{1}{C} \int_{-\infty}^\tau i_C(\sigma)\;d\sigma\]\
+
+Possiamo notare come la relazione appena trovata altro non indica il valore della tensione ai capi del condensatore all'instante $\tau$. Si ottiene che:
+
+\[ x(\tau) = \frac{1}{C} \int_{-\infty}^\tau i_C(\sigma)\;d\sigma = V_C(\tau) \]\
+
+Ora riprendendo la relazione iniziale e dividendo l'integrale da meno infinito a $t$ si ottiene che:
+
+\[ \frac{1}{C} \int_{-\infty}^t i_C(\sigma)\;d\sigma = \frac{1}{C} \int_{-\infty}^\tau i_C(\sigma)\;d\sigma + \frac{1}{C} \int_{\tau}^t i_C(\sigma)\;d\sigma \]\
+
+Riconoscendo che il primo pezzo di integrale è identico allo stato $x(\tau)$ appena trovato otteniamo che:
+
+
+\[ y(t) = \frac{1}{C} \int_{-\infty}^t i_C(\sigma)\;d\sigma = x(\tau) + \frac{1}{C} \int_{\tau}^t i_C(\sigma)\;d\sigma\]\
+
+In definitiva si ha che:
+
+\[ y(t) = x(\tau) + \frac{1}{C} \int_{\tau}^t u(\sigma)\;d\sigma = g\big( x(\tau), u\big( [\tau, t]\big) \big), \hspace{10pt} \forall t \geq \tau  \]\
+
+Possiamo dunque vedere, tramite questa veloce dimostrazione, come attraverso lo stato non ci interessi sapere tutta la storia passata del sistema ma solo quella da un certo istante di tempo in avanti.
+
+\subsection{Definizione di sistema dinamico}
+
+Dato che all'interno di questo corso si tratteranno esclusivamente sistemi dinamici, in quanti più interessanti e meno banali, andiamo ora a dare un definizione assiomatica di sistema dinamico.
+
+\begin{definition}[\textbf{Sistema dinamico}]
+\end{definition}
+
+Un sistema dinamico:
+
+\[S = (T,U,\Omega, X, Y, \Gamma, \varphi, \eta)\]\
+
+è un ente definito dai seguenti elementi
+
+\begin{enumerate}
+	\item[\textbf{-}] \textbf{T:} Insieme ordinato dei tempi
+	\item[\textbf{-}] \textbf{U:} Insieme dei valori assunti dall'ingresso U
+	\item[\textbf{-}] $\Omega$: Insieme delle funzioni di ingresso $u(\cdot):T \rightarrow U$
+	\item[\textbf{-}] \textbf{X:} Insieme dei valori assunti dallo stato $x$
+	\item[\textbf{-}] \textbf{Y:} Insieme dei valori assunti dall'uscita $y$
+	\item[\textbf{-}] $\Gamma$: Insieme delle funzioni di ingresso $y(\cdot):T \rightarrow Y$
+\end{enumerate}
+
+per cui sono definite le seguenti funzioni $\varphi$, $\eta$ che ne determinano la rappresentazione di stato o rappresentazione ingresso-stato-uscita (ISU).
+
 
 
 \subsection{Classificazione dei sistemi}
