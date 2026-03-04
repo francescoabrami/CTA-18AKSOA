@@ -8,9 +8,10 @@
 \newpage
 
 
-\section{Analisi nel dominio di Laplace e del tempo di sistemi dinamici LTI-TC}
+\section{Analisi nel domini di Laplace e del tempo di sistemi dinamici LTI-TC}
 
 
+\subsection{Scomposizione in fratti semplici}
 
 \subsection{Esempi}
 
@@ -55,7 +56,161 @@ Facendo i calcoli otteniamo che:
 
 \[ \left[ \begin{bmatrix} s && 0 \\ 0 && s \end{bmatrix} - \begin{bmatrix} 0 && 1 \\ -2 && -3 \end{bmatrix} \right] ^{-1}  =  \begin{bmatrix} s && -1 \\ 2 && s+3 \end{bmatrix}^{-1} \]\
 
-Procediamo ora andando a calcolare 
+Procediamo ora andando a calcolare l'inversa della matrice $(sI - A)$ secondo quanto detto prima. Partiamo dal calcolo del determinante, si ottiene che:
+
+\[ \unit{det}(sI - A) = s \cdot (s+3) - [2 \cdot (-1)] = s(s+3) + 2 \]\
+
+Calcolando tutti i termini svolgendo il prodotto si ottiene che:
+
+
+\[ \unit{det}(sI - A) = s^2 +3s + 2 \]\
+
+A questo punto possiamo calcolare le matrice \unit{Adj}(sI - A) ovvero la matrice aggiunta della matrice $(sI - A)$. Questa matrice si calcola calcolando tutti i cofattori $C_{ij}$ della matrice, si costruisce poi la matrice dei cofattori ed infine se ne fa la trasposta per ottenere quanto desiderato.
+Data una generica matrice $A$ possiamo dire che:
+
+\[\unit{Adj}(A) = (C_{ij})^T\]\
+
+Dove i cofattori $C_{ij}$ si calcola nel seguente modo:
+
+\[ C_{ij} = (-1)^{i+j} \unit{det}(M_{ij}) \]\
+
+Ricordiamo che il termine $M_{ij}$ è il termine che indica il determinante della sottomatrice ottenuta eliminando la riga $i$ e la colonna $j$ dalla matrice data.\\
+
+Nel caso in cui ci fossero dubbi riguardo ai concetti appena trattati è possibile rivedere concetti e proprietà all'interno della sezione preliminare di \hyperref[sec:concetti]{\textit{"Concetti fondamentali"}}.\\
+
+
+Arrivati a questo punto calcoliamo la matrice dei cofattori un cofattore alla volta.
+Di seguito sono riportati i calcoli, in questo caso non si riportano le sottomatrici in quanto risulterebbero essere composte da un solo elemento.
+
+\[ C_{11} = (-1)^{1+1} \cdot \unit{det}(s+3) = s + 3\]
+\[ C_{12} = (-1)^{1+2} \cdot \unit{det}(2) = -2\]
+\[ C_{21} = (-1)^{2+1} \cdot \unit{det}(-1) = 1\]
+\[ C_{22} = (-1)^{2+2} \cdot \unit{det}(s) = s\]\
+
+Si ottiene dunque la seguente matrice dei cofattori:
+
+\[ C_{ij} = \begin{bmatrix} s+3 && -2 \\ 1 && s \end{bmatrix}\]\
+
+A questo punto calcoliamone la trasposta per ottenere $\unit{Adj}(C_{ij})$. Essendo la matrice di dimensione 2 $\times$ 2 ci basta invertire gli elementi sulla diagonale secondaria. Si ottiene che:
+
+\[ \unit{Adj}(C_{ij}) = \begin{bmatrix} s+3 && 1 \\ -2 && s \end{bmatrix} \]\
+
+A questo punto sviluppiamo la seguente formula:
+
+\[ (sI-A)^{-1} = \frac{1}{\unit{det}(sI-A)} \cdot \unit{Adj}(sI-A) = \frac{1}{s^2 + 3s + 2} \cdot \begin{bmatrix} s && - 1 \\ 2 && s + 3 \end{bmatrix} \]\
+
+Svolgendo i calcoli e  riscrivendo $s^2 + 3s + 2$ come $(s+1)(s+2)$ utilizzando la notazione zeri e poli si ottiene che:
+
+\[ (sI - A)^{-1} = \begin{bmatrix}
+
+\dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
+\dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
+
+\end{bmatrix}\]\
+
+Arrivati a questo punto, calcolato il termine comune, possiamo andare a trovare il movimento libero e movimento forzato.
+Iniziamo con il movimento libero di cui ricordiamo la formula di seguito:
+
+\[X_{l}(s) = (sI - A)^{-1} \cdot x(0) \]\
+
+Svolgiamo i calcoli:
+
+\[ X_{l}(s) = \begin{bmatrix}
+
+\dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
+\dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
+
+\end{bmatrix} \begin{bmatrix} 2 \\ 2 \end{bmatrix} = \]\
+
+Ricordando le regole del prodotto tra matrici si ottiene che:
+
+\[ X_l(s) = \begin{bmatrix} \dfrac{2s + 8}{(s+1)(s+2)} \\[1em] 
+	\dfrac{2s - 4}{(s+1)(s+2)}  \end{bmatrix} \]\
+
+
+Procediamo ora calcolando il movimento forzato nel modo seguente:
+
+\[X_f(s) = (sI-A)^{-1} BU(s) =  \begin{bmatrix}
+
+\dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
+\dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
+
+\end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \]\	
+
+Svolgendo la prima moltiplicazione tra matrici, dove di fatto selezioniamo la prima riga, otteniamo che:
+
+\[X_f(s) = \begin{bmatrix} \dfrac{s+3}{(s+1)(s+2)} \\[1em] \dfrac{-2}{(s+1)(s+2)}
+
+\end{bmatrix} \cdot \frac{2}{s} = \]\
+
+Svolgiamo anche il calcolo della moltiplicazione per $U(s)$, otteniamo che:
+
+\[ X_f(s) = \begin{bmatrix} \dfrac{2(s+3)}{s(s+1)(s+2)} \\[1em] \dfrac{-4}{s(s+1)(s+2)}
+
+\end{bmatrix}  \]\
+
+A questo punto $X(s)$ viene calcolato come la somma di $X_l(s)$ e di $X_f(s)$.
+Svolgendo i calcoli si ottiene che:
+
+\[X(s) = X_l(s) + X_f(s) =  \begin{bmatrix} \dfrac{2s + 8}{(s+1)(s+2)} \\[1em] 
+	\dfrac{2s - 4}{(s+1)(s+2)}  \end{bmatrix}  +   \begin{bmatrix} \dfrac{2(s+3)}{s(s+1)(s+2)} \\[1em] \dfrac{-4}{s(s+1)(s+2)} \end{bmatrix}  = \]\
+	
+\[ X(s) = \begin{bmatrix} \dfrac{2s^2 + 10s + 6}{s(s+1)(s+2)} \\[1em] \dfrac{2s^2-4s-4}{s(s+1)(s+2)} 
+\end{bmatrix} \]\	
+
+A questo punto possiamo andare ad effettuare la scomposizione in fratti semplici secondo quanto riportato di seguito:
+
+\[ X(s) = \begin{bmatrix} X_1(s) \\ X_2(s)\end{bmatrix} = \begin{bmatrix} \dfrac{2s^2 + 10s + 6}{s(s+1)(s+2)} \\[1em] \dfrac{2s^2-4s-4}{s(s+1)(s+2)}  \end{bmatrix} = \begin{bmatrix} \dfrac{R_1^{(1)}}{s} + \dfrac{R_2^{(1)}}{s+1} + \dfrac{R_3^{(1)}}{s+2} \\[1em] \dfrac{R_1^{(2)}}{s} + \dfrac{R_2^{(2)}}{s+1} + \dfrac{R_3^{(2)}}{s+2} \end{bmatrix} \]\
+
+Possiamo notare come i vari termini $R_i^(n)$ non siano altro che i residui che andremo a calcolare tra poco. Notiamo inoltre come i poli non siano scelti a caso ma siano presi dalla scrittura precedente e riportati in modo opportuno.\\
+
+Passiamo ora al calcolo dei primi residui tramite quanto riportato in seguito. Facciamo notare che per risolvere i limiti riportati in seguito si è moltiplicato numeratore e denominatore per il termine riportato nell'operazione di limite.
+
+\[ R_1^{(1)} = \lim_{s \to 0} sX_1(s) = \lim_{s \to 0} s \cdot \frac{2s^2 + 10s + 6}{s(s+1)(s+2)} = \frac{2s^2 + 10s + 6}{(s+1)(s+2)} = 3 \]
+
+\[ R_2^{(1)} = \lim_{s \to -1} (s+1)X_1(s) = \lim_{s \to -1} (s+1) \cdot \frac{2s^2 + 10s + 6}{s(s+1)(s+2)} = \frac{2s^2 + 10s + 6}{s(s+2)} = 2 \]
+
+\[ R_3^{(1)} = \lim_{s \to -2} (s+2)X_1(s) = \lim_{s \to -2} (s+2) \cdot \frac{2s^2 + 10s + 6}{s(s+1)(s+2)} = \frac{2s^2 + 10s + 6}{s(s+1)} = -3 \]\
+
+Otteniamo dunque che:
+
+\[ X_1(s) = \frac{3}{s} + \frac{2}{s+1} - \frac{3}{s+2} \]\
+
+Procediamo ora al calcolo dei residui per il termine $X_2(s)$ in maniera analoga a quanto fatto prima.
+
+
+\[ R_1^{(2)} = \lim_{s \to 0} sX_1(s) = \lim_{s \to 0} s \cdot \frac{2s^2-4s-4}{s(s+1)(s+2)} = \frac{2s^2-4s-4}{(s+1)(s+2)} = -2 \]
+
+\[ R_2^{(2)} = \lim_{s \to -1} (s+1)X_1(s) = \lim_{s \to -1} (s+1) \cdot \frac{2s^2-4s-4}{s(s+1)(s+2)} = \frac{2s^2-4s-4}{s(s+2)} = -2 \]
+
+\[ R_3^{(2)} = \lim_{s \to -2} (s+2)X_1(s) = \lim_{s \to -2} (s+2) \cdot \frac{2s^2-4s-4}{s(s+1)(s+2)} = \frac{2s^2-4s-4}{s(s+1)} = 6 \]\
+
+Otteniamo dunque che:
+
+\[ X_1(s) = - \frac{2}{s} - \frac{2}{s+1} + \frac{6}{s+2} \]\
+
+Mettendo assiemi i risultati appena visti sappiamo che:
+
+\[ X(s) = \begin{bmatrix} X_1(s) \\ X_2(s) \end{bmatrix}  = \begin{bmatrix}
+	\dfrac{3}{s} + \dfrac{2}{s+1} - \dfrac{3}{s+2} \\[1em]  - \dfrac{2}{s} -
+	\dfrac{2}{s+1} + \dfrac{6}{s+2} \end{bmatrix} \]\
+
+
+A questo punto non ci basta che antitrasformare secondo Laplace ricordando che: 
+
+\[ Re^{at} \cdot \varepsilon(t) = \mathcal{L}^{-1} \bigg\{ \frac{R}{s - a} \bigg\} \]\  
+
+In definitiva si ottiene che:
+
+\[ x(t) = \begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix} =  \begin{bmatrix} 3 + 2e^{-t} -3e^{2t} \\ -2 -2e^{t} + 6e^{-2t} \end{bmatrix} \varepsilon (t) \]\
+	
+
+
+
+
+
+
+
 
 
 
