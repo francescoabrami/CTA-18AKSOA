@@ -2,7 +2,7 @@
 
 \input{sections/preamble.tex}
 
-\def\version{0.4.1}
+\def\version{0.5.0}
 
 \begin{document}
 
@@ -18,8 +18,12 @@
 
 %% DISPLAY TABLE OF CONTENTS ON A NEW PAGE %%
 
-\newpage
+\clearpage
+\thispagestyle{empty}
+\pagenumbering{roman}
 \tableofcontents
+\clearpage
+\pagenumbering{arabic}
 
 %% WRITING AND SUBFILE CALL SECTION %%
 
@@ -42,6 +46,13 @@
 %% PARTE II
 
 \subfile{sections/Parte-II/01-Introduzione.tex} % FUTURE USE
+\subfile{sections/Parte-II/02-Blocchi.tex}
+\subfile{sections/Parte-II/03-Progetto.tex}
+\subfile{sections/Parte-II/04-Simulink.tex}
+\subfile{sections/Parte-II/05-Diagrammi.tex}
+
+
+
 
 %% LAB
 
