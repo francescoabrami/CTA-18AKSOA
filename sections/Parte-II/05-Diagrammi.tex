@@ -57,17 +57,36 @@ Infine considerando i DdB di una generica FdT $G(j\omega)$ possiamo dire che:
 	
 	\item[\textbf{-}] Il \textbf{modulo} di $G$ in dB in una qualunque $\omega$ é dato dalla \textbf{somma dei moduli in dB} delle FdT elementari nella stessa $\omega$.
 	
-	\item[\textbf{-}] La \textbf{fase} di $G$ in una qualunque $\omega$ è data dalla \textbf{somma delle fasi} delle FdT $G_i$ nella stessa $\omega$.
+	\item[\textbf{-}] La \textbf{fase} di $G$ in una qualunque $\omega$ è data dalla \textbf{somma delle fasi} delle FdT, indicate come $G_i$, nella stessa $\omega$.
 	
 	\item[\textbf{-}] I diagrammi di Bode di una generica FdT $G$ possono essere quindi essere costruiti sommando i contributi delle singole FdT elementari.
 	
 \end{enumerate}
 
+Infine, come vedremo più avanti, i diagrammi di Bode possono essere tracciati in ambiante Matlab utilizzando il relativo comando riportato di seguito.\\
+
+Il comando \texttt{bode} in ambiente Matlab calcola e disegna il diagramma di Bode (modulo in dB e fase in gradi) della funzione di trasferimento o del modello dinamico che gli viene passato.\\
+
+
+\lstinputlisting[language = Matlab, firstline = 3, lastline = 3]{code/ex.m}
+\hspace{0.5cm}
+
+
+Il comando appena riportato genera il grafico di modulo e fase della FdT da noi passata come parametro. Per fare un esempio andiamo a generare una funzione di trasferimento $G$ così definita:
+
+\[ G = \frac{10}{s \cdot (s+5) }\]\
+
+In Matlab si ottiene che:\\
+
+\lstinputlisting[language = Matlab, firstline = 7, lastline = 9]{code/ex.m}
+\hspace{0.5cm}
+
+Infine ricordiamo che la funzione \texttt{ft} é utilizzabile dopo l'installazione del pacchetto \textbf{Control System Toolbox}, inoltre alla funzione vengono passati come parametri prima il numeratore e poi il denominatore della FdT che volgiamo generare. Facciamo notare infine come sia anche possibile ottenere i valori numerici ritornati dal comando \texttt{bode} nel modo seguente:\\
+
+\lstinputlisting[language = Matlab, firstline = 9, lastline = 11]{code/ex.m}
+\hspace{0.5cm}
 
  
-
-
-
 
 
 \clearpage
