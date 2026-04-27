@@ -102,12 +102,11 @@ A questo punto sviluppiamo la seguente formula:
 
 Svolgendo i calcoli e  riscrivendo $s^2 + 3s + 2$ come $(s+1)(s+2)$ utilizzando la notazione zeri e poli si ottiene che:
 
-\[ (sI - A)^{-1} = \begin{bmatrix}
-
-\dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
-\dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
-
-\end{bmatrix}\]\
+\[ (sI - A)^{-1} =
+\begin{bmatrix}
+\dfrac{s+3}{(s+1)(s+2)} & \dfrac{1}{(s+1)(s+2)} \\[1em]
+\dfrac{-2}{(s+1)(s+2)} & \dfrac{s}{(s+1)(s+2)}
+\end{bmatrix} \]
 
 Arrivati a questo punto, calcolato il termine comune, possiamo andare a trovare il movimento libero e movimento forzato.
 Iniziamo con il movimento libero di cui ricordiamo la formula di seguito:
@@ -116,11 +115,10 @@ Iniziamo con il movimento libero di cui ricordiamo la formula di seguito:
 
 Svolgiamo i calcoli:
 
-\[ X_{l}(s) = \begin{bmatrix}
-
-\dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
-\dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
-
+\[ X_{l}(s) = 
+\begin{bmatrix}
+\dfrac{s+3}{(s+1)(s+2)} & \dfrac{1}{(s+1)(s+2)} \\[1em]
+\dfrac{-2}{(s+1)(s+2)} & \dfrac{s}{(s+1)(s+2)}
 \end{bmatrix} \begin{bmatrix} 2 \\ 2 \end{bmatrix} = \]\
 
 Ricordando le regole del prodotto tra matrici si ottiene che:
@@ -131,23 +129,27 @@ Ricordando le regole del prodotto tra matrici si ottiene che:
 
 Procediamo ora calcolando il movimento forzato nel modo seguente:
 
-\[X_f(s) = (sI-A)^{-1} BU(s) =  \begin{bmatrix}
-
+\[X_f(s) = (sI-A)^{-1} BU(s) =  
+\begin{bmatrix}
 \dfrac{s+3}{(s+1)(s+2)} && \dfrac{1}{(s+1)(s+2)} \\[1em]
 \dfrac{-2}{(s+1)(s+2)} && \dfrac{s}{(s+1)(s+2)}
-
-\end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \]\	
+\end{bmatrix} \begin{bmatrix} 1 \\ 0 
+\end{bmatrix} = \]\	
 
 Svolgendo la prima moltiplicazione tra matrici, dove di fatto selezioniamo la prima riga, otteniamo che:
 
-\[X_f(s) = \begin{bmatrix} \dfrac{s+3}{(s+1)(s+2)} \\[1em] \dfrac{-2}{(s+1)(s+2)}
-
+\[X_f(s) = 
+\begin{bmatrix} 
+\dfrac{s+3}{(s+1)(s+2)} \\[1em] 
+\dfrac{-2}{(s+1)(s+2)}
 \end{bmatrix} \cdot \frac{2}{s} = \]\
 
 Svolgiamo anche il calcolo della moltiplicazione per $U(s)$, otteniamo che:
 
-\[ X_f(s) = \begin{bmatrix} \dfrac{2(s+3)}{s(s+1)(s+2)} \\[1em] \dfrac{-4}{s(s+1)(s+2)}
-
+\[ X_f(s) = 
+\begin{bmatrix} 
+\dfrac{2(s+3)}{s(s+1)(s+2)} \\[1em] 
+\dfrac{-4}{s(s+1)(s+2)}
 \end{bmatrix}  \]\
 
 A questo punto $X(s)$ viene calcolato come la somma di $X_l(s)$ e di $X_f(s)$.
