@@ -1,0 +1,92 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+\clearpage
+\thispagestyle{empty}
+\section{Diagrammi di Bode}
+
+Procediamo ora con la seconda parte del corso andando ad introdurre alcune tipologie di digrammi utili allo studio della materia.
+
+
+\subsection{Introduzione}
+
+Prima di approfondire gli argomenti trattati in questa sezione, chiariamo esattamente di cosa parleremo. In particolare, vogliamo fornire una spiegazione chiara e accurata, seppur breve, di come funzionano i diagrammi di Bode, cosa rappresentano e come vengono utilizzati in questo corso.\\
+
+
+I diagrammi di Bode sono una rappresentazione grafica in scala logaritmica della risposta in frequenza di un sistema dinamico lineare e tempo-invariante (LTI). Si usano due grafici separati: modulo (in dB) e fase (in gradi) in funzione della frequenza angolare $\omega$ (rad/s) su scala logaritmica. In automatica sono fondamentali perché permettono di analizzare stabilità, prestazioni e robustezza di un sistema di controllo in modo intuitivo e quantitativo, senza dover risolvere direttamente equazioni differenziali nel dominio del tempo.
+
+
+
+\subsection{Risposta in frequenza}
+
+\subsection{Diagrammi di Bode e FdT elementari}
+
+
+\subsubsection{DdB di un guadagno}
+\subsubsection{DdB di un polo nell'origine}
+\subsubsection{DdB di un polo reale}
+\subsubsection{DdB di poli complessi coniugati}
+
+\subsection{Osservazioni}
+
+Arrivati a questo punto andiamo a fare dell osservazioni su quanto abbiamo appena detto in questa sezione.
+Come prima cosa, dopo aver visto i vari DdB di FdT elementari specifichiamo che:
+
+
+\begin{enumerate}
+	\item[\textbf{-}] I DdB degli zeri si ottengono da quelli dei poli di pari valore cambiando segno sia ai moduli espressi in dB che alle fasi espresse in gradi.
+	
+	\item[\textbf{-}] I DdB dei poli (zeri) di molteplicità \textbf{i} si ottengono da quelli del polo (zero) semplice moltiplicando i valori del modulo e della fase per \textbf{i}.
+	
+	
+	\item[\textbf{-}] I DdB del modulo tende a $\infty$ dB ($\infty& \unit{u_{nat}})$ $\Leftrightarrow$ c'è almeno un polo sull'asse immaginario del piano complesso.
+		\begin{enumerate}
+			\item[\textbf{-}] Polo reale in zero, semplice o multiplo 
+			\item[\textbf{-}] Coppia di poli immaginari coniugati $\pm j\omega_$  
+		\end{enumerate}
+	
+\end{enumerate}
+
+Infine considerando i DdB di una generica FdT $G(j\omega)$ possiamo dire che:
+
+\begin{enumerate}
+	\item[\textbf{-}] Può essere espressa come prodotto di FdT elementari dette fattori.
+	
+	\item[\textbf{-}] Il \textbf{modulo} di $G$ in dB in una qualunque $\omega$ é dato dalla \textbf{somma dei moduli in dB} delle FdT elementari nella stessa $\omega$.
+	
+	\item[\textbf{-}] La \textbf{fase} di $G$ in una qualunque $\omega$ è data dalla \textbf{somma delle fasi} delle FdT $G_i$ nella stessa $\omega$.
+	
+	\item[\textbf{-}] I diagrammi di Bode di una generica FdT $G$ possono essere quindi essere costruiti sommando i contributi delle singole FdT elementari.
+	
+\end{enumerate}
+
+
+ 
+
+
+
+
+
+\clearpage
+\thispagestyle{empty}
+\section{Diagrammi di polari e di Nyquist}
+
+
+
+
+
+
+
+
+\clearpage
+\thispagestyle{empty}
+\section{Criterio di Nyquist}
+
+
+
+
+
+\end{document}
