@@ -112,6 +112,97 @@ Facciamo notare infine che cliccando con il tasto destro sopra ad un blocco sar�
 \subsection{Elementi principali}
 
 Procediamo ora andando ad analizzare i principali blocchi presenti all'interno della libreria dei componenti.
+In particolare, dato lo scopo di questo corso, andremo ad utilizzare, per la maggior parte del tempo i blocchi presenti all'intero dei sotto-menu denominati \textit{"Continuous"} e \textit{"Discrete"} atti a rappresentare componenti di sistemi dinamici a tempo continuo e discreto.\\
+
+Seguono ora delle rappresentazioni di alcuni dei blocchi presenti:\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.65\textwidth]{images/6.png}
+\caption{Esempi di blocchi a tempo continuo}
+\end{figure}
+
+
+\subsubsection{Sistema LTI}
+
+Procedendo con questa sezione possiamo andare a definire direttamente un sistema Lineare Tempo-Invariante (LTI), sia a tempo discreto che continuo, secondo tutte le modalità già viste in precedenza ed ammesse del \textit{"Control System Toolbox"} quali \texttt{fdt()} o rappresentazioni in variabili di stato utilizzando il blocco "LTI System" disponibile nella libreria del toolbox indicato.
+
+Come possiamo vedere, nella figura sottostante, che attraverso l'interfaccia del blocco LTI Simulink propone direttamente la definizione della FdT attraverso il comando \texttt{fdt()}. Segue una rappresentazione di quanto appena detto:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.65\textwidth]{images/8.png}
+\caption{Esempi di sistema LTI}
+\end{figure}
+
+Inoltre, essendo lo strumento Simulink collegato all'ambiente di sviluppo MATLAB aperto in precedenza, ci sarà possibile andare ad inserire nel campo \textit{"LTI System Variable"} la variabile corrispondente ad una FdT già calcolata in precedenza senza doverla ripetere.
+
+\subsection*{Math Operations}
+
+Passiamo ora ad analizzare velocemente gli operatori di tipo matematico presenti nel sotto-menu \textit{"Math Operations"} tra i quali troviamo blocchi come quello di Gain e Sum visti in precedenza.\\
+
+Riportiamo ora alcuni dei blocchi presenti in questa sezione:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.60\textwidth]{images/9.png}
+\caption{Esempi di blocchi di tipo Math Operations}
+\end{figure}
+
+
+
+\subsubsection{Sources}
+
+Passando oltre nel sotto-menu denominato come \textit{"Sources"} possiamo andare a trovare i vari blocchi che permettono di andare ad applicare certe tipologie di segnale in ingresso.
+Tra i vari segnali troviamo:
+
+\begin{enumerate}
+	\item[\textbf{-}] \textbf{Step:} Genera un segnale avente la forma di un gradino unitario.
+	\item[\textbf{-}] \textbf{Ramp:} Genera un segnale che cresce in modo lineare nel tempo proprio come una rampa.
+	\item[\textbf{-}] \textbf{Sin Wave:} Genera un'onda sinusoidale.
+	\item[\textbf{-}] \textbf{Signal Generator:} Permette di generare uno o più segnali che rispettino le specifiche impostate all'interno della sua interfaccia.
+\end{enumerate} 
+
+É infine anche possibile importare dei segnali generati nello spazio di lavoro MATLAB con il blocco corretto dopo averli appropriatamente definiti.\\
+
+Segue ora un elenco dei possibili blocchi presenti in questa sezione:\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.60\textwidth]{images/10.png}
+\caption{Esempi di blocchi di tipo Sources}
+\end{figure}
+
+\subsubsection{Signal routing e Sinks}
+
+Infine troviamo all'interno dei due sotto-menu \textit{"Signal routing"} e \textit{"Sinks"} i blocchi che permettono di effettuare l'instradamento di segnali e di visualizzarli.
+In particolare nel primo menu troviamo i multiplexer e demultiplexer seguiti da switch manuali ed automatici.
+Nella secondo menu troviamo invece blocchi come lo \textit{"Scope"} o \textit{"To Workspace"} in grado di rappresentare i segnale e salvarli all'interno dell'ambiente di sviluppo MATLAB.\\
+
+Seguono ora gli elenchi dei blocchi presenti nelle sezioni appena descritte:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{images/11.png}
+\caption{Esempi di blocchi di tipo Routing}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{images/12.png}
+\caption{Esempi di blocchi di tipo Sinks}
+\end{figure}
+
+
+\vspace{3cm}
+\subsection{Simulazione}
+
+
+
+
+
+
 
 
 
