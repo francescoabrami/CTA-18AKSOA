@@ -11,6 +11,120 @@
 \vspace*{1.5cm}
 
 
+Arrivati a questo punto, dopo una doverosa introduzione delle problematiche ed obiettivi di questa seconda parte, andiamo a vedere uno degli strumenti principali con cui andremo ad interagire al fine di analizzare diagrammi a blocchi, e non solo, tramite l'utilizzo del calcolatore.\\
+
+Infine prima di procedere ricordiamo che, a differenza di come indicato all'interno del corso, la versione di MATLAB utilizzata sarà R2020b e non la R2014a; dunque le possibili grafiche riportate di seguito potrebbero non essere esattamente uguali a quelle presenti nella versione precedente.
+Per quanto riguarda i comandi eseguiti non ci dovrebbero essere problemi in quanto disponibili dalla versione R2014a in avanti.
+Il motivo di questo cambio di versione é dovuto dal fatto che la versione R2014a non é disponibile per calcolatori Mac di Apple con architettura AArch64 (o ARM64) (M1, M1 Pro, etc.). Si utilizza dunque la versione indicata in precedenza in quanto ha una interfaccia grafica simile a quella indicata nel corso e disponibile (tramite Rosetta II) per Mac (ARM64).
+Infine ricordiamo che la motivazione che ci spinge ad utilizzare una versione di MALTAB così datata é data dal fatto che non comprende molti pacchetti ed estensioni che le versioni più recenti hanno al loro interno; questo rende le procedure di calcolo e simulazione più snelle e veloci. Facciamo notare che quanto detto non vale per computer Mac (ARM64) in quanto l'emulazione tramite Rosetta II rallenta di molto le operazioni di calcolo rendendo le versioni più recenti più reattive e veloci.\\
+
+Iniziamo ora facendo una breve introduzione sull'argomento che tratteremo in questa sezione al fine di comprenderlo al meglio.
+
+\subsection{Introduzione}
+
+Simulink è un ambiente di simulazione grafica sviluppato da MathWorks, integrato con MATLAB \href{https://it.mathworks.com/products/simulink.html}{(vedi la sezione del toolbox dedicata sul sito)}, pensato per la modellazione, la simulazione e l’analisi di sistemi dinamici multidisciplinari. Simulink consente la progettazione e la simulazione di sistemi tramite un’interfaccia grafica a diagrammi a blocchi, rendendo immediato sia lo sviluppo che l'interpretazione dei modelli senza la necessità di scrivere codice per la suddetta simulazione.
+
+In particolare, essendo la simulazione effettuata da un calcolatore ci sarà possibile sviluppare interamente il progetto di un sistema di controllo, verificando agevolmente il soddisfacimento delle specifiche di progetto, nonché la valutazione delle prestazioni di interesse.\\
+
+Tutta la procedura di sviluppo e simulazione di un sistema di controllo ci é facilitata dal fatto che ci é possibile:
+
+\begin{enumerate}
+	\item[\textbf{-}] Assegnare agevolmente differenti \textbf{segnali di riferimento}, come onde sinusoidali, onde quadre ed impulsi istantanei.
+	\item[\textbf{-}] Considerare la contemporanea presenza di \textbf{disturbi} lungo l'anello.
+	\item[\textbf{-}] Visualizzare direttamente l'andamento di più \textbf{variabili} di interesse come l'uscita, l'errore di inseguimento o il comando.
+	\item[\textbf{-}] Salvare in un \textbf{file} il risultato della simulazione rendendolo disponibile successivamente nello spazio di lavoro MATLAB.
+\end{enumerate}
+
+Come prima cosa per iniziare lo sviluppo di un diagramma a blocchi e la successiva simulazione dobbiamo andare ad aprire Simulink digitando il comando \texttt{simulink} nella finestra dei comandi oppure andando ad cliccare sulla finestra \textit{"Simulink"} nella barra in alto nella sezione denominata \textit{"Home"}.\\
+
+
+
+A questo punto, avviato lo strumento, ci sarà possibile:
+
+\begin{enumerate}
+	\item[\textbf{-}] Creare un nuovo modello o aprirne uno già esistente (file .mdl) dal menu \textit{"File"} oppure dalla tab \textit{"Open"}.
+	\item[\textbf{-}] Individuare gli elementi di interesse nella libreria principale di Simulink o fra i toolbox disponibili.
+	\item[\textbf{-}] Modificare caratteristiche generali del toolbox.
+\end{enumerate}
+
+
+\subsection{Creazione di un modello}
+
+Fatta questa introduzione possiamo procedere cliccando sulla finestra che permette di creare un nuovo modello vuoto, disponibile nella finestra ottenuta dopo l'esecuzione del comando \texttt{simulink}. Infine cliccando sul pulsante \textit{"Library Browser"} nella tab \textit{"SIMULATION"} della barra in alto ci sarà possibile selezionare i vari elementi con cui comporre il nostro modello a blocchi.\\
+
+Segue ora una possibile vista della libreria dei componenti disponibili:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.70\textwidth]{images/2.png}
+\caption{Simulink Library Browser}	
+\end{figure}
+
+\vspace{3cm}
+\subsection*{Inserire un blocco}
+
+A questo punto possiamo andare ad inserire un primo blocco all'interno del nostro modello andandolo a ricercare all'interno della libreria come indicato in precedenza.
+Una volta individuato il blocco ci sarà possibile trascinarlo nell'area di progetto oppure premere i tasti \text{} + I una volta selezionato dalla libreria dei componenti per inserirlo all'interno del modello.\\
+
+In questo esempio si sono decisi di inserire un blocco di Gain (guadagno) ed un blocco di Sum (sommatore) disponibili nella libreria dei componenti nella sezione \textit{"Simulink"} e nella sottosezione degli operatori matematici \textit{"Math Operations"}. 
+Riportiamo ora una immagine del risultato ottenuto.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.55\textwidth]{images/1.png}
+\caption{Blocchi di Gain e Sum}	
+\end{figure}
+
+
+\subsection*{Collegare più blocchi}
+
+A questo punto per collegare due blocchi esistenti, attraverso un ramo, ci é sufficiente cliccare sul morsetto di uscita del primo blocco e trascinare il cursore (tenendo premuto il tasto sinistro del mouse) fino a raggiungere il morsetto di ingresso del secondo blocco. Facciamo notare come sia possibile effettuare la stessa operazione selezionando i blocchi nell'ordine desiderato e premendo contemporaneamente il tasto CTRL. Otteniamo così il seguente risultato:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{images/3.png}
+\caption{Blocchi di Gain e Sum uniti tra loro}	
+\end{figure}
+
+\subsection*{Modificare i parametri di un blocco}
+
+Infine ci é possibile, facendo doppio click sul blocco desiderato, andare a modificarne i parametri. In particolare si arriverà ad ottenere la finestra di interfaccia contenente gli appositi campi per l'assegnazione dei parametri del blocco modificabili dall'utente.
+
+Riportiamo una possibile vista dell'interfaccia del blocco di Gain:
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{images/4.png}
+\caption{Interfaccia del blocco di Gain}	
+\end{figure}
+
+Infine é possibile rinominare i blocchi semplicemente cliccandoci sopra e digitando il nome desiderato. Nell'esempio seguente si é modificato il valore del blocco di Gain (da 1 a 10) e si é deciso di mostrarne il nome.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{images/5.png}
+\caption{Blocchi di Gain e Sum uniti tra loro}
+\end{figure}
+
+Facciamo notare infine che cliccando con il tasto destro sopra ad un blocco sarà possibile, attraverso un menu a tendina, andare a modificare tutte le caratteristiche di un blocco quali: parametri, font, rotazione, colori etc.
+
+\subsection{Elementi principali}
+
+Procediamo ora andando ad analizzare i principali blocchi presenti all'interno della libreria dei componenti.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
