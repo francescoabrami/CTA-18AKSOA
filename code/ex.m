@@ -11,3 +11,6 @@ exportgraphics(gcf, 'bode_plot.png', 'Resolution', 300);
 % Estrazione dati
 [mag, phase, w] = bode(G);
 
+
+
+
