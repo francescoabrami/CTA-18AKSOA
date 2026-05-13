@@ -8,7 +8,14 @@
 \thispagestyle{empty}
 \subsection{Esercitazione VII}
 
+In questa esercitazione di Controlli Automatici, vengono affrontati e risolti due esercizi pratici finalizzati al progetto di controllori analogici per sistemi dinamici mediante la tecnica della sintesi per tentativi. Gli esercizi si concentrano sull’analisi e la sintesi di controllori $C(s)$ che soddisfino un insieme di specifiche prestazionali tipiche dei sistemi di controllo.
+
+Attraverso questi esercizi, vengono applicate le principali metodologie analitiche e grafiche per il progetto dei controllori, con il supporto del software \textsc{Matlab} per la verifica delle specifiche richieste sfruttando funzioni come feedback, che consentono di analizzare le risposte dei sistemi in catena chiusa. Vengono inoltre valutati i limiti di attenuazione di disturbi ad alta frequenza e la risposta del sistema a diversi tipi di ingresso.
+
+
+\vspace*{1cm}
 \subsubsection{Progetto di controllori analogici mediante sintesi per tentativi I}
+\label{tentativi1}
 
 Sia dato un sistema di controllo avente $K_r = 1$ e:
 
@@ -55,8 +62,6 @@ Si ipotizzi inoltre che il sistema di controllo sia quello riportato in nella \a
 
 
 
-
-
 Si richiede di ora di progettare il controllore $C(s)$ in modo che siano soddisfatte le seguenti specifiche:
 
 \begin{enumerate}[label=\alph*)]
@@ -73,15 +78,24 @@ Dopo aver verificato che il sistema in catena chiusa così ottenuto soddisfi le 
 	\item[\textbf{-}] L’attenuazione con la quale vengono riportati in uscita disturbi sinusoidali entranti insieme al riferimento $r(t)$ ed aventi pulsazione maggiore o uguale a 100 rad/s.
 \end{enumerate}
 
-\textbf{Nota:} Per il primo punto delle due richieste aggiuntive si suggerisce di utilizzare come funzione di sensibilità $S(s) = \frac{1}{1 + G_a(s)}$ può essere calcolata in MATLAB con il comando \texttt{feedback(1,Ga)}, dove \texttt{Ga} è la funzione di trasferimento d’anello $G_a(s)$
+\textbf{Nota:} Per il primo punto delle due richieste aggiuntive si suggerisce di utilizzare come funzione di sensibilità $S(s) = \frac{1}{1 + G_a(s)}$ può essere calcolata in MATLAB con il comando \texttt{feedback(1,Ga)}, dove \texttt{Ga} è la funzione di trasferimento d’anello $G_a(s)$.\\
+
+\subsubsection*{Soluzione esercizio \ref{tentativi1}}
+
+Procediamo ora con la soluzione di tutti i punti dell'esercizio di cui abbiamo appena riportato il testo.
 
 
 
 
-
-
-\vspace{10cm}
-
+\vspace*{1cm}
 \subsubsection{Progetto di controllori analogici mediante sintesi per tentativi II}
+\label{tentativi2}
+
+
+\subsubsection*{Soluzione esercizio \ref{tentativi2}}
+
+Procediamo ora con la soluzione di tutti i punti dell'esercizio di cui abbiamo appena riportato il testo.
+
+
 
 \end{document}

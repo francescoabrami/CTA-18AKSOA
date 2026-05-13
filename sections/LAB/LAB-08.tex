@@ -8,7 +8,14 @@
 \thispagestyle{empty}
 \subsection{Esercitazione VIII}
 
+In questa ottava esercitazione di Controlli Automatici vengono affrontati temi fondamentali relativi al progetto di controllori digitali per sistemi dinamici, con particolare riferimento all’applicazione concreta su un modello di motore elettrico.
+
+L’esercitazione consente di mettere in pratica le procedure di progetto, discretizzazione, simulazione e verifica dei controllori digitali, consolidando la comprensione delle tecniche di conversione dal dominio continuo a quello discreto. Viene inoltre dato ampio spazio all’uso di strumenti di simulazione Matlab/Simulink, indispensabili in ambito industriale per l’analisi e la progettazione assistita da calcolatore di sistemi di controllo automatico.
+
+\vspace*{1cm}
+
 \subsubsection{Progetto di un controllore digitale per un motore elettrico}
+\label{progetto1}
 
 Si consideri un motore elettrico comandato in armatura, descritto dalle equazioni:
 
@@ -109,10 +116,16 @@ In caso di mancato soddisfacimento delle specifiche, modificare opportunamente i
 \textbf{Nota:} Per la verifica del soddisfacimento della specifica relativa all’errore di inseguimento alla rampa é sufficiente sostituire al blocco \texttt{Step} l’apposito blocco \texttt{Ramp}.
 
 
+\subsubsection*{Soluzione esercizio \ref{progetto1}}
+
+Procediamo ora con la soluzione di tutti i punti dell'esercizio di cui abbiamo appena riportato il testo.
 
 
 
+
+\vspace*{1cm}
 \subsubsection{Progetto di un controllore PID}
+\label{progetto2}
 
 Si ipotizzi di avere un sistema avente funzione di trasferimento:
 
@@ -126,6 +139,11 @@ Tale  sistema é controllato in catena chiusa con retroazione negativa unitaria 
 	C_{PID}(s) \doteq \frac{u(s)}{r(s) - y(s)} = K_p \left( 1 + \frac{1}{T_Is} + \frac{T_Ds}{1 + \dfrac{T_D}{N}s} \right) 
 \end{equation}
 
+
+
+\subsubsection*{Soluzione esercizio \ref{progetto2}}
+
+Procediamo ora con la soluzione dell'esercizio di cui abbiamo appena riportato il testo.
 
 
 
