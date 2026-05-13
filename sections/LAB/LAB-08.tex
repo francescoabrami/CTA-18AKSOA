@@ -10,7 +10,7 @@
 
 In questa ottava esercitazione di Controlli Automatici vengono affrontati temi fondamentali relativi al progetto di controllori digitali per sistemi dinamici, con particolare riferimento all’applicazione concreta su un modello di motore elettrico.
 
-L’esercitazione consente di mettere in pratica le procedure di progetto, discretizzazione, simulazione e verifica dei controllori digitali, consolidando la comprensione delle tecniche di conversione dal dominio continuo a quello discreto. Viene inoltre dato ampio spazio all’uso di strumenti di simulazione Matlab/Simulink, indispensabili in ambito industriale per l’analisi e la progettazione assistita da calcolatore di sistemi di controllo automatico.
+L’esercitazione consente di mettere in pratica le procedure di progetto, discretizzazione, simulazione e verifica dei controllori digitali, consolidando la comprensione delle tecniche di conversione dal dominio continuo a quello discreto. Viene inoltre dato ampio spazio all’uso di strumenti di simulazione \textsc{Matlab}/\textsc{Simulink}, indispensabili in ambito industriale per l’analisi e la progettazione assistita da calcolatore di sistemi di controllo automatico.
 
 \vspace*{1cm}
 
@@ -39,7 +39,7 @@ La tensione di armatura $v_a(t)$ è fornita da un attuatore avente ingresso $u(t
 \end{equation}
 
 
-Il sistema complessivo, avente come ingressi il comando $u(t)$ e la coppia di disturbo esterna $T_d(t)$ e come uscita la tensione $V_\omega(t) = K_t \cdot \omega(t)$ della dinamo tachimetrica (usata per misurare la velocità angolare $\omega$), può essere rappresentato in Simulink mediante il seguente modello:\\
+Il sistema complessivo, avente come ingressi il comando $u(t)$ e la coppia di disturbo esterna $T_d(t)$ e come uscita la tensione $V_\omega(t) = K_t \cdot \omega(t)$ della dinamo tachimetrica (usata per misurare la velocità angolare $\omega$), può essere rappresentato in \textsc{Simulink} mediante il seguente modello:\\
 
 % FOTO MODELLO
 
@@ -59,7 +59,7 @@ in cui $\omega_s(t)$ è la velocità angolare del modello semplificato e:
 \end{split}	
 \end{equation}
 
-I due modelli (completo\_esemplificato) sono implementati nel simulatore Simulink disponibile (\texttt{simulatore\_motore.mdl}), utilizzabile dopo aver eseguito il file di caricamento dei parametri (\texttt{parametri\_motore.m}) ed aver progettato un opportuno controllore digitale da includere nel blocco \texttt{C\_discreto}.\\
+I due modelli (completo\_esemplificato) sono implementati nel simulatore \textsc{Simulink} disponibile (\texttt{simulatore\_motore.mdl}), utilizzabile dopo aver eseguito il file di caricamento dei parametri (\texttt{parametri\_motore.m}) ed aver progettato un opportuno controllore digitale da includere nel blocco \texttt{C\_discreto}.\\
 
 %% FOTO MOODELLO
 
@@ -89,12 +89,12 @@ Il controllore analogico deve essere discretizzato scegliendo adeguatamente:
 	\item[\textbf{-}] Il metodo di discretizzazione.
 \end{enumerate}
 
-Infine si richiede di verificare in ambiente Matlab/Simulink il soddisfacimento delle specifiche, secondo i seguenti passi indicati di seguito:
+Infine si richiede di verificare in ambiente \textsc{Matlab}/\textsc{Simulink} il soddisfacimento delle specifiche, secondo i seguenti passi indicati di seguito:
 
 
 \subsubsection*{1 - Verifica delle specifiche con il modello semplificato e valutazione del valore massimo dell’attività sul segnale di controllo}
 
-Per questa verifica (sul comando $u$) si richiede di utilizzare il seguente schema Simulink:
+Per questa verifica (sul comando $u$) si richiede di utilizzare il seguente schema \textsc{Simulink}:
 
 %% FOTO SCHEMA
 
@@ -103,7 +103,7 @@ Se il controllore discretizzato progettato soddisfa tutte le specifiche, mantene
 \subsubsection*{2 - Verifica delle specifiche per il motore descritto dal modello completo}
 
 
-Inserire il controllore digitale progettato nel simulatore fornito (\texttt{simulatore\_ motore.mdl}), per verificare che le specifiche siano soddisfatte anche per il motore \textit{"reale"}, descritto dal modello completo comprensivo del blocco di saturazione a $\pm$5 V sul comando. Si consiglia di inserire in un unico file la definizione dei parametri del motore (contenuta in \texttt{parametri\_motore.m}) e del controllore digitale progettato, da eseguire prima della simulazione in Simulink. Confrontare il comportamento del motore descritto dal modello completo con quello del sistema semplificato, verificando che le specifiche siano comunque soddisfatte:
+Inserire il controllore digitale progettato nel simulatore fornito (\texttt{simulatore\_ motore.mdl}), per verificare che le specifiche siano soddisfatte anche per il motore \textit{"reale"}, descritto dal modello completo comprensivo del blocco di saturazione a $\pm$5 V sul comando. Si consiglia di inserire in un unico file la definizione dei parametri del motore (contenuta in \texttt{parametri\_motore.m}) e del controllore digitale progettato, da eseguire prima della simulazione in \textsc{Simulink}. Confrontare il comportamento del motore descritto dal modello completo con quello del sistema semplificato, verificando che le specifiche siano comunque soddisfatte:
 
 \begin{enumerate}
 	\item In assenza di disturbi ($T_s$ = 0).
