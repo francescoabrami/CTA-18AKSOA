@@ -17,7 +17,7 @@ SYS = ss(A,B,C,D) % Modello a tempo continuo
 SYS = ss(A,B,C,D,T) % Modello a tempo discreto con periodo di campionamento
 SYS = ss % Modello stato-spazio vuoto
 SYS = ss(D) % Modello stato-spazio che rappresenta il guadagno statico D
-SYS = ss(A,B,C,D,LTISYS) % Modello SS con proprietà sono ereditati LTISYS
+SYS = ss(A,B,C,D,LTISYS) % Modello SS con caratteristiche ereditate da LTISYS
 
 SYS = ss(SYS) % Converte il modello di sistema dinamico SYS in un modello SS
 
