@@ -10,6 +10,78 @@
 
 \subsubsection{Progetto di controllori analogici mediante sintesi per tentativi I}
 
+Sia dato un sistema di controllo avente $K_r = 1$ e:
+
+\begin{equation}
+	F(s) = \frac{13.5(s+4)(s+10)}{(s+3)^3}
+\end{equation}
+
+Si ipotizzi inoltre che il sistema di controllo sia quello riportato in nella \autoref{fig:E701}:
+
+
+\begin{figure}[h]
+\begin{center}
+
+\begin{tikzpicture}[transform shape]
+	\node[shape=rectangle, draw, line width=1pt, minimum width=1.215cm, minimum height=1.215cm] at (18.265, -14.015){};
+	\draw[line width=0.8pt, -latex] (18.89, -14.008) -- (19.765, -14.008);
+	\node[shape=circle, draw, line width=1pt, minimum width=0.45cm] at (20.008, -14.008){};
+	\node[shape=circle, draw, line width=1pt, minimum width=0.45cm] at (16.523, -14.015){};
+	\draw[line width=0.8pt, -latex] (15.405, -14.015) -- (16.28, -14.015);
+	\draw[line width=0.8pt, -latex] (16.765, -14.015) -- (17.64, -14.015);
+	\node[shape=rectangle, draw, line width=1pt, minimum width=1.215cm, minimum height=1.215cm] at (21.75, -14){};
+	\draw[line width=0.8pt, -latex] (20.25, -14) -- (21.125, -14);
+	\draw[line width=0.8pt, -latex] (22.375, -14) -- (23.25, -14);
+	\node[shape=rectangle, draw, line width=1pt, minimum width=1.215cm, minimum height=1.215cm] at (18.25, -15.625){};
+	\draw[line width=0.8pt, -latex] (20, -13) -- (20.008, -13.765);
+	\draw[line width=0.8pt, -latex] (17.625, -15.625) -| (16.523, -14.258);
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (14.905, -14.015){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (14.905, -14.015){$r(s)$};
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (18.25, -14){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (18.25, -14){$C(s) $};
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (18.125, -15.625){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (18.125, -15.625){$1/K_r$};
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (20, -12.562){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (20, -12.562){$d(s)$};
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (21.625, -14){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (21.625, -14){$F(s)$};
+	\node[shape=rectangle, minimum width=0.965cm, minimum height=0.84cm] at (23.75, -14){} node[anchor=center, align=center, text width=0.577cm, inner sep=6pt] at (23.75, -14){$y(s)$};
+	\draw[line width=0.8pt, -latex] (21.75, -14.625) |- (18.875, -15.625);
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.59cm] at (15.78, -13.703){} node[anchor=center, align=center, text width=0.327cm, inner sep=6pt] at (15.78, -13.703){$\textbf{+}$\\};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.59cm] at (20.375, -13.313){} node[anchor=center, align=center, text width=0.327cm, inner sep=6pt] at (20.375, -13.313){$\textbf{+}$\\};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.59cm] at (19.265, -13.695){} node[anchor=center, align=center, text width=0.327cm, inner sep=6pt] at (19.265, -13.695){$\textbf{+}$\\};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.59cm] at (16.125, -15){} node[anchor=center, align=center, text width=0.327cm, inner sep=6pt] at (16.125, -15){$-$\\};
+\end{tikzpicture}
+
+\caption{Sistema di controllo proposto}
+\label{fig:E701}
+\end{center}
+\end{figure}
+
+
+
+
+
+Si richiede di ora di progettare il controllore $C(s)$ in modo che siano soddisfatte le seguenti specifiche:
+
+\begin{enumerate}[label=\alph*)]
+	\item Errore di inseguimento a $r(t) = t$ in regime permanente pari al massimo in modulo a 0.01.
+	\item Effetto del disturbo $d(t) = 1$ sull’uscita in regime permanente pari al massimo in modulo a 0.02.
+	\item Banda passante del sistema retroazionato pari a circa 6 rad/s (la specifica é ritenuta soddisfatta se l’errore commesso è inferiore in modulo al 15\%).
+	\item Picco di risonanza della risposta in frequenza ad anello chiuso minore (o uguale) a 2 dB.
+\end{enumerate}
+
+Dopo aver verificato che il sistema in catena chiusa così ottenuto soddisfi le specifiche richieste, valutare il tempo di salita e la sovraelongazione massima della risposta al gradino unitario. Si richiede inoltre di valutare:
+
+\begin{enumerate}
+	\item[\textbf{-}] L'errore di inseguimento massimo in regime permanente a $r(t) = \sin(0.1 t)$.
+	\item[\textbf{-}] L’attenuazione con la quale vengono riportati in uscita disturbi sinusoidali entranti insieme al riferimento $r(t)$ ed aventi pulsazione maggiore o uguale a 100 rad/s.
+\end{enumerate}
+
+\textbf{Nota:} Per il primo punto delle due richieste aggiuntive si suggerisce di utilizzare come funzione di sensibilità $S(s) = \frac{1}{1 + G_a(s)}$ può essere calcolata in MATLAB con il comando \texttt{feedback(1,Ga)}, dove \texttt{Ga} è la funzione di trasferimento d’anello $G_a(s)$
+
+
+
+
+
+
+\vspace{10cm}
+
 \subsubsection{Progetto di controllori analogici mediante sintesi per tentativi II}
 
 \end{document}
