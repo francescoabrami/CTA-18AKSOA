@@ -24,6 +24,25 @@ L’esperienza offre anche l’occasione per esercitarsi nell’impiego degli st
 \subsubsection{Risposta di sistemi del I ordine ad ingressi canonici}
 \label{lab21}
 
+Dati i sistemi dinamici SISO LTI a tempo continuo descritti dalle seguenti finzioni di trasferimento:
+
+\begin{equation}	
+	G_1(s) = \frac{10}{s - 5}, \hspace{10pt} G_2(s) = \frac{10}{s}, \hspace{10pt} 	G_3(s) = \frac{10}{s+10}, \hspace{10pt} G_4(s) = \frac{10}{s+20} 
+\end{equation}
+
+\begin{enumerate}
+	\item Tracciare mediante \textsc{Matlab} i rispettivi grafici degli andamenti dell'evoluzione temporale dell risposte $y(t)$ all'impulso unitario utilizzando i comandi \texttt{impulse} oppure \texttt{ltiview}. \\
+	Dove possibile, si valutino per via grafica le costanti di tempo $\tau$ (date dal piede della tangente alla risposta iniziale $y_0 = y(t=0)$) e si verifichi che i valori ricavati sono in accordo con la relazione $\tau = -1 / p$ essendo $p$ il polo del sistema considerato. \\
+	Inoltre dove possibile, si ricavi per via grafica i valori finali di $y_\infty$ delle risposte $y(t)$ e se ne verifichi l'uguaglianza con i risultati forniti dal teorema del valore finale.
+	\item Si traccino, sempre mediante \textsc{Matlab}, i rispettivi grafici degli andamenti dell'evoluzione temporale delle risposte $y(t)$ al gradino unitario utilizzando i comandi \texttt{step} oppure \texttt{ltiview}. \\
+	Dove possibile, si valutino per via grafica la costanti di tempo $\tau$ (date dall'intersezione della tangete alla risposta iniziale $y_0$ con la retta orizzontale tangente alla risposta finale $y_\infty$) e si verifichi che i valori ricavati sono in accordo con la relazione $\tau = -1/p$, essendo $p$ il polo del sistema considerato. \\
+	Inoltre dove possibile, si ricavi per via grafica i valori finali di $y_\infty$ delle risposte $y(t)$ e se ne verifichi l'uguaglianza con i risultati forniti dal teorema del valore finale; si osservi che all'istante $t = \tau\; (t = 2\tau; \; t = 3\tau)$ la risposta $y(t)$ ha raggiunto circa il 63\% (86\%; 95\%) del suo valore finale $y_\infty$.\\
+	Infine dove possibile, si determinino per via grafica i tempi si salita $t_S$ (pari al tempo necessario affinché $y(t)$ passi per la prima volta dal 10\% al 90\% del valore finale $y+\infty$). 
+
+\end{enumerate}
+
+\textbf{Nota:} l'espressione \textit{"dove possibile"} precedentemente usata sottointende che si debba valutare soprattuto dal punto di vista teorico se la richiesta effettuata abbia senso oppure no.
+
 
 \subsubsection*{Soluzione esercizio \ref{lab21}}
 
@@ -31,6 +50,63 @@ L’esperienza offre anche l’occasione per esercitarsi nell’impiego degli st
 \vspace*{1cm}
 \subsubsection{Risposta al gradini di sistemi del II ordine}
 \label{lab22}
+
+
+\begin{enumerate}
+	\item Dati i sistemi dinamici SISO LTI a tempo continuo descritti dalle seguenti funzioni di trasferimento (caratterizzate da due poli reali e nessuno zero):
+
+		\begin{equation}
+			G_1(s) = \frac{20}{(s+1)(s+10)} \hspace{10pt} G_2(s) = \frac{2}{(s+1)^2}  \hspace{10pt} G_3(s)  = \frac{0.2}{(s+1)(s+0.1)} 
+		\end{equation}
+
+		Se ne confrontino mediante \textsc{Matlab} i rispettivi grafici degli andamenti dell'evoluzione temporale delle risposte $y(t)$ al gradino unitario, osservando l'effetto dei diversi valori del secondo polo.\\
+		Si ricavino inoltre, per via grafica, i valori finali $Y_\infty$ delle risposte $y(t)$ e se ne verifichi l'uguaglianza con i risultati forniti dal teorema del valor finale.\\
+		Si ricavino infine, sempre per via grafica, i tempi di salita $t_S$ (pari al tempo necessario affinché $y(t)$ passi per la prima volta dal 10\% al 90\% del valore finale $y+\infty$).
+		
+	\item Dato il sistema dinamico SISO LTI a tempo continuo descritto dalla seguente funzione di trasferimento (caratterizzata da due poli reali ed uno zero in $z$):
+		\begin{equation}
+			G_4(s) = \frac{5}{-z} \cdot \frac{s-z}{(s+1)(s+5)} 
+		\end{equation}
+		
+		Si confrontino mediante \textsc{Matlab} i grafici delle risposte $y(t)$ al gradino unitario corrispondenti alla seguenti scelte del valore dello zero:
+		\begin{enumerate}
+			\item $z_1$ = 100, $z_2$ = 10, $z_3$ = 1, $z_4$ = 0.5 (compare una sottosegnalazione);\\
+			\item $z_5$ = -0.9, $z_6$ = -0.5, $z_7$ = -0.1 compare una sottosegnalazione definita come $\hat s = \frac{y_{max} - y_\infty}{y_\infty}$ ed espressa normalmente in percentuale);
+			\item $z_8$ = -100, $z_9$ = -10, $z_{10}$ = -2 (cambia la velocità di risposta);
+		\end{enumerate}
+		
+		Si determinino per via grafica i tempi di salita $t_S$ (pari al tempo necessario affinché $y(t)$ passi per la prima volta dal 10\% al 90\% del valore finale $y+\infty$).
+		
+	\item Dato il sistema dinamico SISO LTI a tempo continuo descritto della seguente funzione di trasferimento (caratterizzata da nessuno zero e da due poli complessi coniugati, purché $\omega_n > 0$ e $|\zeta| < 1$):
+		\begin{equation}
+			G_5(s) = \frac{\omega_n^2}{s^2+2\zeta \omega_n s + \omega_n^2}
+		\end{equation}
+		
+		Si confrontino mediante \textsc{Matlab} i grafici delle risposte $y(t)$ al gradino unitario corrispondenti alla seguenti scelte dei valori dei parametri $\omega_n$ e $\zeta$:
+		\begin{enumerate}
+			\item $\omega_n$ = 2, $\zeta$ = 0.5;
+			\item $\omega_n$ = 2, $\zeta$ = 0.25;
+			\item $\omega_n$ = 1, $\zeta$ = 0.5;
+		\end{enumerate}		
+		
+		Si valutino per via grafica le massime sovraelongazioni $\hat s = \frac{y_{max} - y_{\infty}}{y_\infty}$ e si verifichi che i valori ricavati sono in accordo con la relazione:
+		
+		\begin{equation}
+			\hat s = e^{\bigg(\dfrac{-\pi \zeta}{\sqrt{1 - \zeta ^2}}\bigg)}
+		\end{equation}
+		
+		Si valutino per via grafica i tempi di salita $t_S$ (pari al tempo necessario perché $y(t)$ raggiunga per la prima volta il valore $y_\infty$ partendo dal valore iniziale $y_0$) e si verifichi che i valori ricavati sono in accordo con la relazione:
+		
+		\begin{equation}
+			t_S = \frac{1}{\omega_n \sqrt{1 - \zeta^2} (\pi - \arccos(\zeta))}
+		\end{equation}		
+		
+		Si valutino infine, sempre per via grafica, i tempi assestamento al 5\% $t_{a,5\%}$ (pari al tempo necessario affinché $y(t)$ differisca definitivamente dal valore finale $y_\infty$ di non più del 5\%).
+		
+\end{enumerate}
+
+
+
 
 \subsubsection*{Soluzione esercizio \ref{lab22}}
 
