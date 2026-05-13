@@ -31,12 +31,6 @@ lsim(sys, u, t)
 
 lsim(SYS, U, T, XO)
 
-lsim(SYS1, SYS2, ..., U, T,XO)
+lsim(SYS1, SYS2, ..., SYS)
 
-lsim(sys1, 'r', sys2, 'y--', sys3, 'gx', u,t)
 
-[Y,T] = lsim(SYS, U, ...)
-
-length(T)
-
-[Y,T,X] = lsim(SYS, U, ...)
