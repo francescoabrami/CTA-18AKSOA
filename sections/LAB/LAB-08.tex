@@ -1,0 +1,136 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+\clearpage
+\thispagestyle{empty}
+\subsection{Esercitazione VIII}
+
+\subsubsection{Progetto di un controllore digitale per un motore elettrico}
+
+Si consideri un motore elettrico comandato in armatura, descritto dalle equazioni:
+
+
+\begin{equation}
+\begin{split}
+	L_a \frac{di_a(t)}{dt} &= -R_ai_a(t) -K_m\omega(t) + v_a(t) \\
+	J_a \frac{d \omega _a(t)}{dt} &= K_mi_a(t) - \beta \omega(t) + T_d(t) 
+\end{split}
+\end{equation}
+
+
+La tensione di armatura $v_a(t)$ è fornita da un attuatore avente ingresso $u(t)$ e descritto dalle equazioni:
+
+
+\begin{equation}
+\begin{split}
+	\frac{dv_a(t)}{dt} &= [v_i(t) - R_si_a(t)] \frac{K_{PWM}}{\tau _a} \\
+	\frac{dv_i(t)}{dt} &= u(t)	
+\end{split}	
+\end{equation}
+
+
+Il sistema complessivo, avente come ingressi il comando $u(t)$ e la coppia di disturbo esterna $T_d(t)$ e come uscita la tensione $V_\omega(t) = K_t \cdot \omega(t)$ della dinamo tachimetrica (usata per misurare la velocità angolare $\omega$), può essere rappresentato in Simulink mediante il seguente modello:\\
+
+% FOTO MODELLO
+
+
+Si assumano i seguenti valori numerici dei parametri: $R_a = 6 \; \Omega, \; L_a = 3.24\cdot 10^{-3}H, \; K_m = 0.0535\; \unit{V} s/rad = 0.0535 \;\unit{Nm/A},\; J = 19.74 \cdot 10^{-6} \unit{kgm^2} ,\;\beta = 17.7 \cdot 10^{-6} \unit{Ns/m}, KPWM = 2.925, R_s = 7.525\;\Omega, \tau_a = 10^{-3} \unit{s}, K_t = 0.02 \unit{Vs}.$\\
+
+Un modello semplificato del sistema è il seguente, la cui uscita è la tensione $V_{\omega s}(t)$ = $K_t \cdot \omega_s(t):$
+
+% FOTO MODELLO SEMPLIFICATO
+
+in cui $\omega_s(t)$ è la velocità angolare del modello semplificato e:
+
+\begin{equation}
+\begin{split}
+	F(s) &= \frac{\omega_s(s)}{u(s)} \bigg|_{T_d(s) = 0} = \frac{402.5}{s(1 + s/0.8967 )} \\
+	F_d(s) &= \frac{\omega_s(s)}{T_d(s)} \bigg|_{u(s) = 0} = - \frac{56500}{1 + s/0.8967}
+\end{split}	
+\end{equation}
+
+I due modelli (completo\_esemplificato) sono implementati nel simulatore Simulink disponibile (\texttt{simulatore\_motore.mdl}), utilizzabile dopo aver eseguito il file di caricamento dei parametri (\texttt{parametri\_motore.m}) ed aver progettato un opportuno controllore digitale da includere nel blocco \texttt{C\_discreto}.\\
+
+%% FOTO MOODELLO
+
+Il controllore digitale $C(z)$ (ottenuto per discretizzazione di un controllore analogico $C(s)$) deve garantire il soddisfacimento delle seguenti specifiche:
+
+\begin{enumerate}
+	\item Errore nullo di inseguimento in regime permanente a riferimenti costanti.
+	\item Errore di inseguimento in regime permanente ad un riferimento a rampa V$_{\omega,rif}(t) = t$non superiore in modulo a 0.05 V.
+	\item Sovraelongazione della risposta al gradino unitario non superiore al 25\%.
+	\item Tempo di salita della risposta al gradino non superiore a 0.5s.
+\end{enumerate}
+
+% FOTO MODELLO III
+
+Il controllore analogico deve essere progettato facendo riferimento al modello approssimato del motore elettrico, comprensivo del polo nell’origine inserito dall’attuatore e del guadagno $K_t$ della dinamo tachimetrica:
+
+
+\begin{equation}
+	F'(s) = \frac{V_ \omega _s(s)}{u(s)} = K_t \cdot F(s) = \frac{8.05}{s(1 + s/0.8967)}
+\end{equation}
+
+tenendo conto che la tensione di comando $u$ generata dal controllore non deve superare in modulo il valore di 5 V per evitare saturazioni dell’attuatore.
+Il controllore analogico deve essere discretizzato scegliendo adeguatamente:
+
+\begin{enumerate}
+	\item[\textbf{-}] Il passo di campionamento $T_s$.
+	\item[\textbf{-}] Il metodo di discretizzazione.
+\end{enumerate}
+
+Infine si richiede di verificare in ambiente Matlab/Simulink il soddisfacimento delle specifiche, secondo i seguenti passi indicati di seguito:
+
+
+\subsubsection*{1 - Verifica delle specifiche con il modello semplificato e valutazione del valore massimo dell’attività sul segnale di controllo}
+
+Per questa verifica (sul comando $u$) si richiede di utilizzare il seguente schema Simulink:
+
+%% FOTO SCHEMA
+
+Se il controllore discretizzato progettato soddisfa tutte le specifiche, mantenendo sempre il valore del comando u minore di 5 V in modulo, passare alla successiva verifica delle prestazioni ottenute dal motore rappresentato dal modello completo.
+
+\subsubsection*{2 - Verifica delle specifiche per il motore descritto dal modello completo}
+
+
+Inserire il controllore digitale progettato nel simulatore fornito (\texttt{simulatore\_ motore.mdl}), per verificare che le specifiche siano soddisfatte anche per il motore \textit{"reale"}, descritto dal modello completo comprensivo del blocco di saturazione a $\pm$5 V sul comando. Si consiglia di inserire in un unico file la definizione dei parametri del motore (contenuta in \texttt{parametri\_motore.m}) e del controllore digitale progettato, da eseguire prima della simulazione in Simulink. Confrontare il comportamento del motore descritto dal modello completo con quello del sistema semplificato, verificando che le specifiche siano comunque soddisfatte:
+
+\begin{enumerate}
+	\item In assenza di disturbi ($T_s$ = 0).
+	\item In presenza di una coppia di disturbo $T_d$ = $\pm$ 10$^{-4}$ Nm.
+\end{enumerate}
+
+
+In caso di mancato soddisfacimento delle specifiche, modificare opportunamente il progetto del controllore e ripetere i passi precedenti.\\
+
+\textbf{Nota:} Per la verifica del soddisfacimento della specifica relativa all’errore di inseguimento alla rampa é sufficiente sostituire al blocco \texttt{Step} l’apposito blocco \texttt{Ramp}.
+
+
+
+
+
+\subsubsection{Progetto di un controllore PID}
+
+Si ipotizzi di avere un sistema avente funzione di trasferimento:
+
+\begin{equation}
+	F(s) = \frac{5 \cdot ( 1+ s/4)}{(1+2)^2 \cdot ( 1+ s/16 )^2 }
+\end{equation}
+
+Tale  sistema é controllato in catena chiusa con retroazione negativa unitaria e controllore in cascata di tipo PID reale, con funzione di trasferimento:
+
+\begin{equation}
+	C_{PID}(s) \doteq \frac{u(s)}{r(s) - y(s)} = K_p \left( 1 + \frac{1}{T_Is} + \frac{T_Ds}{1 + \dfrac{T_D}{N}s} \right) 
+\end{equation}
+
+
+
+
+
+
+
+
+\end{document}
