@@ -115,6 +115,41 @@ Dati i sistemi dinamici SISO LTI a tempo continuo descritti dalle seguenti finzi
 \subsubsection{Stabilità di sistemi dinamici LTI}
 \label{lab23}
 
+\begin{enumerate}
+	\item Dati i sitemi dinamici LTI a tempo continuo aventi come rappresentazione in variabili di stato:
+		
+		\begin{equation}
+		\begin{split}
+			\dot x(t) = Ax(t) + Bu(t) \\
+			y(t) = Cx(t) + Du(t)
+		\end{split}	
+		\end{equation}
+		
+		in cui $B=\begin{bmatrix}1\\1\end{bmatrix}$, $C=\begin{bmatrix} 1 & 3\end{bmatrix}$, $D=\begin{bmatrix} 0 \end{bmatrix}$ e la matrice $A$ assume uno dei seguenti valori:
+		\begin{equation*}		
+			A_1=\begin{bmatrix} -0.5 & 1 \\ 0 & -2 \end{bmatrix}, \hspace{5pt}
+			A_2=\begin{bmatrix} -0.5 & 1 \\ 0 & -1\end{bmatrix}, \hspace{5pt}
+			A_3=\begin{bmatrix} -0.5 & 1 \\ 0 & 0 \end{bmatrix}, \hspace{5pt}
+			A_4=\begin{bmatrix} -0.5 & 1 \\ 0 & 1 \end{bmatrix}
+		\end{equation*}
+		
+		Simulare l'evoluzione dello stato $x(t)$ a partire da una arbitraria condizione iniziale $x(t = 0) \neq \begin{bmatrix}0\\0\end{bmatrix}$ ed assumendo nullo l'ingresso: $u(t) = \bar u = 0, \forall t > 0.$ Virificare che gli andamenti ottenuti siano in accordo con i risultati forniti dall'analisi di stabilità dei sistemi considerati.
+		
+	\item Dati i sistemi dinamici LTI  a tempo discreto aventi come rappresentazione in variabili di stato:
+
+		\begin{equation}
+		\begin{split}
+			\dot x(k+1) = Ax(k) + Bu(k) \\
+			y(k) = Cx(k) + Du(k)
+		\end{split}	
+		\end{equation}
+		
+		in cui le matrici $A$, $B$, $C$, $D$, sono le stesse considerate al punto precedente, simulare l'evoluzione dello stato $x(k)$ a partire da una arbitraria condizione iniziale $x(t=0) \neq \begin{bmatrix}0\\0\end{bmatrix}$ ed assumendo nullo l'ingresso: $u(k) = \bar u = 0, \forall k > 0$. Verificare che gli andamenti ottenuti siano in accordo con i risultati forniti dall'analisi di stabilità dei sistemi considerati.
+	 
+	
+			
+\end{enumerate}
+
 \subsubsection*{Soluzione esercizio \ref{lab23}}
 
 \end{document}
