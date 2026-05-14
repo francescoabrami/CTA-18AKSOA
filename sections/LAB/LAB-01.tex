@@ -139,8 +139,8 @@ che, scegliendo come variabili di ingresso $u = [i]$, stato $x = [x_1,\; x_2]^T 
 
 \begin{equation}
 \begin{cases}
-	\dot x_1 = - \dfrac{1}{C} x_2 + \dfrac{1}{C} u \\
-	\dot x_2 = - \dfrac{1}{L} x_1 - \dfrac{R}{L} x_2 \\
+	\dot x_1 = - \frac{1}{C} x_2 + \frac{1}{C} u \\
+	\dot x_2 = - \frac{1}{L} x_1 - \frac{R}{L} x_2 \\
 	y = x_1
 \end{cases}	
 \end{equation}
@@ -151,18 +151,18 @@ Assumendo $C = 0.2$ F ed $i(t) = i_0 \cos(\omega_0 t)$, si simuli il comportamen
 
 	\item L'ingresso $i(t)$ é un gradino unitario ($i_0 = 1$ A $\omega_0 = 0$ rad/s), mentre i valori numerici degli altri parametri e dello stato iniziale sono:
 	\begin{enumerate}
-	\item $R = 10\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 100\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 0.1\Omega$, $L = 0.05$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 10\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0.2]^T;$;
+	\item $R = 10\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 100\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 0.1\;\Omega$, $L = 0.05$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 10\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0.2]^T;$;
 	\end{enumerate}
 	
 	\item L'ingresso $i(t)$ é di tipo sinusoidale ($i_0 = 1$ A $\omega_0 = 4$ rad/s), mentre i valori numerici degli altri parametri e dello stato iniziale sono:
 	\begin{enumerate}
-	\item $R = 10\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 100\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 0.1\Omega$, $L = 0.05$H, $x(t=0) = x_0 = [0,\;0]^T;$;
-	\item $R = 10\Omega$, $L = 0.5$H, $x(t=0) = x_0 = [0,\;0.2]^T;$;
+	\item $R = 10\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 100\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 0.1\;\Omega$, $L = 0.05$ H, $x(t=0) = x_0 = [0,\;0]^T;$;
+	\item $R = 10\;\Omega$, $L = 0.5$ H, $x(t=0) = x_0 = [0,\;0.2]^T;$;
 	\end{enumerate}
 
 \end{enumerate}
@@ -207,6 +207,44 @@ Tutti i comandi sopra indicati possono essere seguiti da alcune proprità. Digit
 
 
 \lstinputlisting[language = Matlab, firstline = 22, lastline = 22]{code/ex.m}
+
+Passando oltre il comando:
+
+\lstinputlisting[language = Matlab, firstline = 26, lastline = 26]{code/ex.m}
+
+permette di eseguire il plot della risposta temporale del sistema LTI modellato da \texttt{SYS} in base ai segnali di ingresso descritti da \texttt{T} ed \texttt{U}. Il vettore dei tempi \texttt{T} consiste di intervalli numerici equamente spaziati tra di loro mentre \texttt{U} é una matrice con tante colonne quanti input sono presenti. In particolare la \texttt{i}-esima riga specifica il valore di input al tempo \texttt{T(i)}. Per esempio:
+
+ \lstinputlisting[language = Matlab, firstline = 28, lastline = 30]{code/ex.m}
+
+simula la risposta di \texttt{SYS} ad $u(t) = \sin(t)$ durante un tempo di 5 secondi.
+Si nota come nel tempo discreto \texttt{U} debba essere campionato con lo stesso passo con cui viene campionato il sistema (\texttt{T} diventa dunque ridondante e può essere omesso o dichiarato come matrice vuota).
+Invece nel tempo continuo, il periodo di campionamento \texttt{T(2)-T(1)} deve essere piccolo abbastanza da catturare i dettagli del segnale in ingresso. Il vettore dei tempi \texttt{T} viene ricampionato quando potrebbero verificarsi oscillazioni tra i campioni.\\
+
+Il comando:
+
+ \lstinputlisting[language = Matlab, firstline = 32, lastline = 32]{code/ex.m}
+ 
+ serve per specificare stati iniziali non nulli \texttt{XO} (solo per sistemi SS) mentre il comando:
+ 
+ \lstinputlisting[language = Matlab, firstline = 34, lastline = 34]{code/ex.m}
+
+serve per simulare la risposta di più sistemi LTI come \textt{SYS1} o \textt{SYS2} su di un singola operazione di plot. 
+Notiamo come le condizioni iniziali \textt{XO} siano opzionali e che possa essere utile utilizzare diversi colori per distinguere i risultati ottenuti come indicato di seguito:
+
+
+\lstinputlisting[language = Matlab, firstline = 36, lastline = 36]{code/ex.m}
+
+Infine quanto il comando viene invocato fornendo degli argomenti a sinistra del simbolo dell'uguale:
+
+\lstinputlisting[language = Matlab, firstline = 38, lastline = 38]{code/ex.m}
+
+vengono ritornati la cronologia di output \texttt{Y} ed il vettore dei tempi \texttt{T} usati per la simulazione. In questo caso non viene mostrato nessun plot a schermo. Infine la matrice \texttt{Y} ha un numero di righe pari a \textt{LENGTH(T)} e tante colonne quanti sono gli output di \texttt{SYS}.
+
+Infine per sistemi di tipo SS:
+
+\lstinputlisting[language = Matlab, firstline = 42, lastline = 42]{code/ex.m}
+
+viene anche ritornato la traiettoria dello stato \texttt{X} una matrice con un numero di righe pari a \textt{LENGTH(T)} e tante colonne quanti gli stati.
 
 
 \subsubsection*{Soluzione esercizio \ref{sim2}}
