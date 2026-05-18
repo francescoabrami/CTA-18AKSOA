@@ -228,8 +228,8 @@ Il comando:
  
  \lstinputlisting[language = Matlab, firstline = 34, lastline = 34]{code/ex.m}
 
-serve per simulare la risposta di più sistemi LTI come \textt{SYS1} o \textt{SYS2} su di un singola operazione di plot. 
-Notiamo come le condizioni iniziali \textt{XO} siano opzionali e che possa essere utile utilizzare diversi colori per distinguere i risultati ottenuti come indicato di seguito:
+serve per simulare la risposta di più sistemi LTI come \texttt{SYS1} o \texttt{SYS2} su di un singola operazione di plot. 
+Notiamo come le condizioni iniziali \texttt{XO} siano opzionali e che possa essere utile utilizzare diversi colori per distinguere i risultati ottenuti come indicato di seguito:
 
 
 \lstinputlisting[language = Matlab, firstline = 36, lastline = 36]{code/ex.m}
@@ -253,12 +253,72 @@ viene anche ritornato la traiettoria dello stato \texttt{X} una matrice con un n
 \subsubsection{Calcolo delle funzioni di trasferimento}
 \label{sim3}
 
+Si calcolino ora le funzioni di trasferimento dei sistemi dinamici precedentemente considerati.
+\textbf{Nota:} si ricorda di prendere in considerazione l'utilizzo del comando \textsc{Matlab} \texttt{ss2tf}
+
+\subsection*{Comando \textsc{Matlab} \texttt{ss2tf}}
+
+Il comando preso in esempio é in grado di convertire un sistema di tipo SS ad una funzione di trasferimento dello stesso. In particolare tramite il comando:
+
+\lstinputlisting[language = Matlab, firstline = 44, lastline = 44]{code/ex.m}
+
+si calcola la funzione di trasferimento così indicata:
+
+\begin{equation}
+	\texttt{H(s)} = \frac{\texttt{NUM(s)}}{\texttt{DEN(S)}} \texttt{= C(sI - A)}^{-1} \texttt{B + D}}  \end{equation}
+
+ottenuta dal sistema $\dot x = Ax + Bu$, $y = Cx + Du$ del\texttt{iu}-esimo input. Il vettore \texttt{DEN} contiene i coefficienti del denominatore in ordine di potenze decrescenti di \texttt{s}. Invece i coefficienti del numeratore sono restituiti in una matrice \textt{NUM} con tante righe quanti sono gli output di $y$.
+
+
 \subsubsection*{Soluzione esercizio \ref{sim3}}
+
+
+
+
+
+
+
 
 \vspace*{1cm}
 \subsubsection{Calcolo analitico di risposte nel tempo di sistemi dinamici mediante antitrasformata di Laplace}
 \label{sim4}
 
+Si calcolino analiticamente, per condizioni iniziali nulle, le risposte dei sistemi dinamici precedentemente considerati ai seguenti ingressi:
+
+\begin{enumerate}[label=\textbf{-}]
+	\item Gradino di ampiezza $u_0\;:\;u(t) = u_0 \cdot \varepsilon (t)$
+	\item Rampa unitaria $u(t) = t \cdot \varepsilon (t)$
+	\item Coseno di ampiezza $u_0$ e di pulsazione 4 rad/s: $u(t) = u_0 \cos(4t) \cdot \varepsilon (t)$
+\end{enumerate}
+
+\textbf{Nota:} si ricorda di prendere in considerazione l'utilizzo dei comandi \textsc{Matlab} \texttt{tf}, \texttt{tfdata} e \texttt{residue}.
+
+
+
+
+
+
+
+
+
+
 \subsubsection*{Soluzione esercizio \ref{sim4}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
